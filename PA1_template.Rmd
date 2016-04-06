@@ -23,13 +23,13 @@ head(code,10)
 ```
 
 ## What is mean total number of steps taken per day?
-### Step 1: summarize number of step per day
+Step 1: summarize number of step per day
 ```{r, echo=TRUE}
 agg_steps <- aggregate(code$steps,by = list(day=code$date),FUN=sum, na.rm=TRUE)
 
 ```
 
-### Step 2: plot a histogram
+Step 2: plot a histogram
 ```{r, echo = TRUE}
 qplot(x,data=agg_steps,weight=as.numeric(day), geom="histogram",binwidth=500,ylab = "Frequency used",xlab = "Total steps per day")
 
