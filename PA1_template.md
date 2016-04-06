@@ -1,13 +1,12 @@
 ---
 
 title: "PA1_template"
-
 author: "Jorge Capellan"
-
 date: "3 de abril de 2016"
-
-output: html_document
-
+output: 
+  html_document: 
+    keep_md: yes
+    toc: yes
 ---
 
 # Reproducible research peer assginment 1
@@ -113,3 +112,4 @@ we_df <- aggregate(x=weekend_dataframe$steps,by=list(weekend_dataframe$interval)
 we_df_plot <- ggplot(data=we_df, aes(x=Group.1, y=x))+ geom_line() + ylab("avg steps taken") + xlab("5 miutes interval")
 we_df_plot
 ```
+
