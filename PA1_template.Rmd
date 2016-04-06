@@ -46,7 +46,7 @@ median
 
 ## What is the average daily activity pattern?
 
-## Time series plot of the average steps taken per 5 minutes interval
+Time series plot of the average steps taken per 5 minutes interval
 
 ```{r, echo = TRUE}
 avg_per_interval <- aggregate(x=code$steps,by=list(code$interval),FUN = mean, na.rm=TRUE)
@@ -54,7 +54,7 @@ avg_steps <- ggplot(data=avg_per_interval, aes(x=Group.1, y=x))+ geom_line() + y
 avg_steps
 ```
 
-## Identify the 5 minutes interval than on average contains the maximum number of steps
+Identify the 5 minutes interval than on average contains the maximum number of steps
 
 ```{r, echo = TRUE}
 max_steps <- max(avg_per_interval$x)
@@ -74,12 +74,12 @@ code2$steps[is.na(code2$steps)] <- round(mean(code2$steps, na.rm=TRUE))
 head(code2,10)
 ```
 
-## Histogram of new dataframe
+Histogram of new dataframe
 ```{r, echo = TRUE}
 agg_steps2 <- aggregate(code2$steps,by = list(day=code2$date),FUN=sum, na.rm=TRUE)
 qplot(x,data=agg_steps2,weight=as.numeric(day), geom="histogram",binwidth=500,ylab = "Frequency used",xlab = "Total steps per day")
 ```
-### Mean and median of new dataframe
+Mean and median of new dataframe
 ```{r, echo = TRUE}
 mean2 <- mean(agg_steps2$x)
 mean2
@@ -95,14 +95,14 @@ head(code3,10)
 code3$Weekdays <- isWeekday(code$date, wday=1:5)
 head(code3,10)
 ```
-### weekdays dataframe and graph
+weekdays dataframe and graph
 ```{r, echo = TRUE}
 weekday_dataframe <- subset(code3, code3$Weekdays==TRUE)
 wd_df <- aggregate(x=weekday_dataframe$steps,by=list(weekday_dataframe$interval),FUN = mean, na.rm=TRUE)
 wd_df_plot <- ggplot(data=wd_df, aes(x=Group.1, y=x))+ geom_line() + ylab("avg steps taken") + xlab("5 miutes interval")
 wd_df_plot
 ```
-### weekend dataframe and graph
+weekend dataframe and graph
 ```{r, echo = TRUE}
 weekend_dataframe <- subset(code3,code3$Weekdays==FALSE)
 we_df <- aggregate(x=weekend_dataframe$steps,by=list(weekend_dataframe$interval),FUN = mean, na.rm=TRUE)
